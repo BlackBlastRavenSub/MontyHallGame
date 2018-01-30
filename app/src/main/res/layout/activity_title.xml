@@ -6,13 +6,64 @@
     android:layout_height="match_parent"
     tools:context="com.game.blastraven.b.montyhallgame.TitleActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/startButton"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="16dp"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="スタート"
+        app:buttonMode="regular"
+        app:layout_constraintBottom_toTopOf="@+id/bootstrapButton3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapButton2"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="遊び方"
+        app:buttonMode="regular"
+        app:layout_constraintBottom_toTopOf="@+id/bootstrapButton4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapButton3"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ハイスコア"
+        app:buttonMode="regular"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapButton4"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ランキング"
+        app:buttonMode="regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
 
 </android.support.constraint.ConstraintLayout>
