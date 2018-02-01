@@ -19,7 +19,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bootstrapButton3"
         app:layout_constraintStart_toStartOf="parent"
         app:roundedCorners="true"
-        app:showOutline="false" />
+        app:showOutline="false"
+        android:onClick="gameStart"/>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/bootstrapButton2"
@@ -34,7 +35,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bootstrapButton4"
         app:layout_constraintEnd_toEndOf="parent"
         app:roundedCorners="true"
-        app:showOutline="false" />
+        app:showOutline="false"
+        android:onClick="howToPlay"/>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/bootstrapButton3"
@@ -49,7 +51,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:roundedCorners="true"
-        app:showOutline="false" />
+        app:showOutline="false"
+        android:onClick="highScore"/>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/bootstrapButton4"
@@ -64,6 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:roundedCorners="true"
-        app:showOutline="false" />
+        app:showOutline="false"
+        android:onClick="ranking"/>
 
 </android.support.constraint.ConstraintLayout>
