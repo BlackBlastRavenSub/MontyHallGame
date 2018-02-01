@@ -19,6 +19,8 @@ public class TitleActivity extends AppCompatActivity {
     }
     public void gameStart(View view) {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, GameCoreActivity.class);
+        startActivity(intent);
     }
     public void howToPlay(View view) {
         Intent intent = new Intent(this, HowToPlayActivity.class);
@@ -28,6 +30,14 @@ public class TitleActivity extends AppCompatActivity {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
     }
     public void ranking(View view) {
+        Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
+    }
+
+    public void writeing(View view) {
+        Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
+
+    }
+    public void reading(View view) {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
     }
 

@@ -70,4 +70,6 @@
         app:showOutline="false"
         android:onClick="ranking"/>
 
+
+
 </android.support.constraint.ConstraintLayout>
