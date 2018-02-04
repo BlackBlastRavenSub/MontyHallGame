@@ -25,8 +25,6 @@ public class Database extends AppCompatActivity {
     private final static int    DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
     private SQLiteDatabase db;      //データベースオブジェクト
-     String MemData;//書き込まれたデータ
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class Database extends AppCompatActivity {
     }
     //ボタンクリックイベントの処理
     //DBへの書き込み
-    public void writeing() {
+    public   void writeing() {
         try {
             //String str = editText.getText().toString();
             String str = "BTB7";
