@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.game.blastraven.b.montyhallgame.GameCoreActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="380dp"
+        android:layout_height="118dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/game_core"
+        app:layout_constraintBottom_toTopOf="@+id/bootstrapDoor1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor1"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="232dp"
+        android:onClick="door1"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア1"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor2"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="232dp"
+        android:onClick="door2"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア2"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor3"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door3"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア3"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor1"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor4"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door4"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア4"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor2"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor5"
+        android:layout_width="155dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door5"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア5"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor3"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor6"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door6"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア6"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor4"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor7"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door7"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア7"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor5"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor8"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door8"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア8"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor6"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor9"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door9"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア9"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor7"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/bootstrapDoor10"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="door10"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="ドア10"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor8"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/write"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="writeing"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="書き込み"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/read"
+        android:layout_width="154dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:onClick="reading"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:bootstrapText="読み込み"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+</android.support.constraint.ConstraintLayout>
