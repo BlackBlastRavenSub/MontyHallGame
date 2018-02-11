@@ -5,38 +5,33 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class GameCoreActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
-
         TextView game_core =this.findViewById(R.id.textView);
         String game_core_view=getString(R.string.game_core);
-        String datacatch=Database.reading();
+        //String datacatch=Database.reading();
     }
     //public void writeing(View view) {game_core.setText(Database.reading());}
 }
-
 class Game{
     int select;//プレイヤーが選んだドア
-
     int id;
     int level;//現在のステージ
     String stage;//現在の段階
-    int dummy;//
+    int dummy;//プレイヤーが一回目で正解のドアを選んだ際に指定される不正解のドア
     int score=0;
 }
 class Door{
     final int id;//ドアの固有ID
-    boolean choose=false;//プレイヤーにこのドアが選ばれたか?
+    boolean choose=false;//プレイヤーはこのドアを選んだか?
     boolean open=false;//結局ドアは今空いているのか?
     boolean correct=false;//これは正解のドアか?
     Door(int id){
         this.id=id;
     }
 }
-
 /*
  public void writeing(View view) {
         writeFile("testing!!");

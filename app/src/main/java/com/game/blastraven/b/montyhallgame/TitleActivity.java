@@ -1,17 +1,14 @@
 package com.game.blastraven.b.montyhallgame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.FileInputStream;
-
 public class TitleActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +29,20 @@ public class TitleActivity extends AppCompatActivity {
     public void ranking(View view) {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
     }
-
     public void writeing(View view) {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
-
     }
     public void reading(View view) {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
     }
-
+    //Android端末の戻るボタン
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            this.moveTaskToBack(true);//アプリ全体の中断(できれば完全に終了させたい・・・)
+            return false;
+        }
+        return true;
+    }
 }
 /*private static final String FILE_NAME1 = "highscore";
     private EditText verEditText;
@@ -51,6 +53,5 @@ public class TitleActivity extends AppCompatActivity {
             inputTextStream=openFileInput(filename);
         }
     }
-*
 *verEditText = (EditText) findViewById(R.id.editText);
 * */
