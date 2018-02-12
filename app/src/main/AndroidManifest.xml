@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.game.blastraven.b.montyhallgame">
-
+    <!--
+     android:iconは現在暫定画像が1つだけになっている、完成時には各解像度に対応した画像を"@mipmap"に配置すること！
+     -->
     <application
         android:name=".TestBootstrap"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/title"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
