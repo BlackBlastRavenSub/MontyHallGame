@@ -2,6 +2,8 @@ package com.game.blastraven.b.montyhallgame;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class GameCoreActivity extends AppCompatActivity {
@@ -12,6 +14,8 @@ public class GameCoreActivity extends AppCompatActivity {
         TextView game_core =this.findViewById(R.id.textView);
         String game_core_view=getString(R.string.game_core);
         //String datacatch=Database.reading();
+        //Button btn1 = this.findViewById(R.id.bootstrapDoor1);
+        //btn1.setVisibility(View.INVISIBLE);
     }
     //public void writeing(View view) {game_core.setText(Database.reading());}
 }
@@ -20,8 +24,20 @@ class Game{
     int id;
     int level;//現在のステージ
     String stage;//現在の段階
-    int dummy;//プレイヤーが一回目で正解のドアを選んだ際に指定される不正解のドア
+    int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
     int score=0;
+
+    //1回目のドア選択
+    int FirstChoice(){
+        public void highScore(View view) {
+
+        }
+
+        return id;
+    }
+    //最後のドア選択
+    void FinalChoice(){}
+
 }
 class Door{
     final int id;//ドアの固有ID
