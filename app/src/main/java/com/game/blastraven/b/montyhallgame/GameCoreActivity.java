@@ -6,46 +6,62 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 public class GameCoreActivity extends AppCompatActivity {
+    Database database= new Database();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
-        TextView game_core =this.findViewById(R.id.textView);
-        String game_core_view=getString(R.string.game_core);
-        //String datacatch=Database.reading();
-        //Button btn1 = this.findViewById(R.id.bootstrapDoor1);
-        //btn1.setVisibility(View.INVISIBLE);
+        TextView game_core = this.findViewById(R.id.textView);
+        String game_core_view = getString(R.string.game_core);
+        String datacatch=database.reading();
+        //ボタンを非表示にする
+        BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
+        button1.setVisibility(View.INVISIBLE);
+
     }
     //public void writeing(View view) {game_core.setText(Database.reading());}
+    public void writeing(View view) {
+        database.writeing();
+    }
+    public void reading(View view) {
+        database.reading();
+    }
 }
-class Game{
+
+
+class Game  {
     int select;//プレイヤーが選んだドア
-    int id;
+    int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
+    int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
     int level;//現在のステージ
     String stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
-    int score=0;
+    int score = 0;//現在のプレイヤーのスキル
+    //1回目のドア選択(一旦切り離し!)
 
-    //1回目のドア選択
-    int FirstChoice(){
-        public void highScore(View view) {
+    void FirstChoice() {
+        int firstId;
 
-        }
-
-        return id;
     }
+
     //最後のドア選択
-    void FinalChoice(){}
+    void FinalChoice() {
+
+    }
 
 }
-class Door{
+
+class Door {
     final int id;//ドアの固有ID
-    boolean choose=false;//プレイヤーはこのドアを選んだか?
-    boolean open=false;//結局ドアは今空いているのか?
-    boolean correct=false;//これは正解のドアか?
-    Door(int id){
-        this.id=id;
+    boolean choose = false;//プレイヤーはこのドアを選んだか?
+    boolean open = false;//結局ドアは今空いているのか?
+    boolean correct = false;//これは正解のドアか?
+
+    Door(int id) {
+        this.id = id;
     }
 }
 /*

@@ -10,21 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
- * Created by shota on 2018/02/04.
+ * Created by shotaro on 2018/02/04.
  */
 
 public class Database extends AppCompatActivity {
-    private final static int WC = LinearLayout.LayoutParams.WRAP_CONTENT;
-    private final static int MP = LinearLayout.LayoutParams.MATCH_PARENT;
     private final static String TAG_WRITE  = "write";
     private final static String TAG_READ   = "read";
     private final static String DB_NAME    = "test.db";//DB名
     private final static String DB_TABLE   = "test";   //テーブル名
     private final static int    DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
-    private SQLiteDatabase db;      //データベースオブジェクト
+    private SQLiteDatabase db;//データベースオブジェクト
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +33,19 @@ public class Database extends AppCompatActivity {
     }
     //ボタンクリックイベントの処理
     //DBへの書き込み
-    public   void writeing() {
+    public void writeing() {
+        Toast.makeText(this, "書き込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = editText.getText().toString();
             String str = "BTB7";
             writeDB(str);
         } catch (Exception e) {
-            editText.setText("書き込み失敗しました。");
+            Toast.makeText(this, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
         }
     }
     //DBからの読み込み
     public String reading() {
+        //Toast.makeText(this, "読み込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = readDB();
             //editText.setText(str);
@@ -53,7 +54,6 @@ public class Database extends AppCompatActivity {
         } catch (Exception e) {
             return "読み込み失敗しました。";
         }
-
     }
     //データベースへの書き込み(6)
     private void writeDB(String info) throws Exception {
