@@ -5,34 +5,111 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class GameCoreActivity extends AppCompatActivity {
-    Database database= new Database();
+    Database database = new Database();
+    Game game = new Game();
+    Door[] door = new Door[100];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        for (int i = 0; i < 99; i++) {
+            door[i]=new Door(i+1);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
         TextView game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core);
-        String datacatch=database.reading();
-        //ボタンを非表示にする
-        BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
-        button1.setVisibility(View.INVISIBLE);
-
+        //String datacatch = database.reading();
     }
+
     //public void writeing(View view) {game_core.setText(Database.reading());}
     public void writeing(View view) {
         database.writeing();
     }
+
     public void reading(View view) {
         database.reading();
     }
+
+
+    //各ボタンを押したときの動作
+    public void bootstrapDoor1(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[0].choose=true;
+
+    }
+
+    public void bootstrapDoor2(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[1].choose=true;
+    }
+
+    public void bootstrapDoor3(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[2].choose=true;
+    }
+
+    public void bootstrapDoor4(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[3].choose=true;
+    }
+
+    public void bootstrapDoor5(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[4].choose=true;
+    }
+
+    public void bootstrapDoor6(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[5].choose=true;
+    }
+
+    public void bootstrapDoor7(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[6].choose=true;
+    }
+
+    public void bootstrapDoor8(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[7].choose=true;
+    }
+
+    public void bootstrapDoor9(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[8].choose=true;
+    }
+
+    public void bootstrapDoor10(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[9].choose=true;
+    }
 }
 
-
-class Game  {
+class Game {
     int select;//プレイヤーが選んだドア
     int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
     int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
@@ -44,6 +121,9 @@ class Game  {
 
     void FirstChoice() {
         int firstId;
+        //ボタンを非表示にする
+        //BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
+        //button1.setVisibility(View.INVISIBLE);
 
     }
 
@@ -54,7 +134,12 @@ class Game  {
 
 }
 
-class Door {
+class Door extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     final int id;//ドアの固有ID
     boolean choose = false;//プレイヤーはこのドアを選んだか?
     boolean open = false;//結局ドアは今空いているのか?
@@ -62,6 +147,12 @@ class Door {
 
     Door(int id) {
         this.id = id;
+    }
+
+    void bootstrapDoor2(View view) {
+        //ボタンを非表示にする
+        BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
+        button1.setVisibility(View.INVISIBLE);
     }
 }
 /*
