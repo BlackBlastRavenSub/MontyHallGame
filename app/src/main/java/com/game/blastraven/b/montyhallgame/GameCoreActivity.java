@@ -17,12 +17,13 @@ public class GameCoreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         for (int i = 0; i < 99; i++) {
-            door[i]=new Door(i+1);
+            door[i] = new Door(i + 1);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
         TextView game_core = this.findViewById(R.id.textView);
-        String game_core_view = getString(R.string.game_core);
+        String game_core_view = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_view);
         //String datacatch = database.reading();
     }
 
@@ -35,8 +36,90 @@ public class GameCoreActivity extends AppCompatActivity {
         database.reading();
     }
 
+    int idSearch() {
+        int id = 0;
+        for (int i = 0; i < 99; i++) {
+            if (door[i].choose == true) {
+                id = door[i].id;
+            }
+        }
+        return id;
+    }
+
 
     //各ボタンを押したときの動作
+    public void buttonclick(View view) {
+        //押されたボタンごとに個別の動作
+        switch (view.getId()) {
+            case R.id.bootstrapDoor1:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[0].choose = true;
+                break;
+            case R.id.bootstrapDoor2:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[1].choose = true;
+                break;
+            case R.id.bootstrapDoor3:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[2].choose = true;
+                break;
+            case R.id.bootstrapDoor4:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[3].choose = true;
+                break;
+            case R.id.bootstrapDoor5:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[4].choose = true;
+                break;
+            case R.id.bootstrapDoor6:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[5].choose = true;
+                break;
+            case R.id.bootstrapDoor7:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[6].choose = true;
+                break;
+            case R.id.bootstrapDoor8:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[7].choose = true;
+                break;
+            case R.id.bootstrapDoor9:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[8].choose = true;
+                break;
+            case R.id.bootstrapDoor10:
+                for (int i = 0; i < 99; i++) {
+                    door[i].choose = false;
+                }
+                door[9].choose = true;
+                break;
+        }
+        //どのボタンが押されてもこの部分の処理は行われる
+        game.select = idSearch();
+        TextView game_core = this.findViewById(R.id.textView);
+        String game_core_view = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_view);
+
+    }
+    /*ボタン旧案
     public void bootstrapDoor1(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
@@ -44,69 +127,61 @@ public class GameCoreActivity extends AppCompatActivity {
         door[0].choose=true;
 
     }
-
     public void bootstrapDoor2(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[1].choose=true;
     }
-
     public void bootstrapDoor3(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[2].choose=true;
     }
-
     public void bootstrapDoor4(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[3].choose=true;
     }
-
     public void bootstrapDoor5(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[4].choose=true;
     }
-
     public void bootstrapDoor6(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[5].choose=true;
     }
-
     public void bootstrapDoor7(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[6].choose=true;
     }
-
     public void bootstrapDoor8(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[7].choose=true;
     }
-
     public void bootstrapDoor9(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[8].choose=true;
     }
-
     public void bootstrapDoor10(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
         }
         door[9].choose=true;
     }
+    */
 }
 
 class Game {
@@ -117,8 +192,12 @@ class Game {
     String stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
     int score = 0;//現在のプレイヤーのスキル
-    //1回目のドア選択(一旦切り離し!)
 
+    Game() {
+        select=0;
+    }
+
+    //1回目のドア選択(一旦切り離し!)
     void FirstChoice() {
         int firstId;
         //ボタンを非表示にする
