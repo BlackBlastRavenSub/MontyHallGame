@@ -9,10 +9,13 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
+//これで良い・・・のか？
+import static com.game.blastraven.b.montyhallgame.GameCoreActivity.door;
+
 public class GameCoreActivity extends AppCompatActivity {
     Database database = new Database();
     Game game = new Game();
-    Door[] door = new Door[100];
+    static Door[] door=new Door[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +39,12 @@ public class GameCoreActivity extends AppCompatActivity {
         database.reading();
     }
 
-    int idSearch() {
-        int id = 0;
-        for (int i = 0; i < 99; i++) {
-            if (door[i].choose == true) {
-                id = door[i].id;
-            }
-        }
-        return id;
-    }
 
+    void screenUpdate(){
+        TextView game_core = this.findViewById(R.id.textView);
+        String game_core_view = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_view);
+    }
 
     //各ボタンを押したときの動作
     public void buttonclick(View view) {
@@ -113,11 +112,8 @@ public class GameCoreActivity extends AppCompatActivity {
                 break;
         }
         //どのボタンが押されてもこの部分の処理は行われる
-        game.select = idSearch();
-        TextView game_core = this.findViewById(R.id.textView);
-        String game_core_view = getString(R.string.game_core, game.select);
-        game_core.setText(game_core_view);
-
+        game.select = game.idSearch();
+        screenUpdate();
     }
     /*ボタン旧案
     public void bootstrapDoor1(View view) {
@@ -183,8 +179,7 @@ public class GameCoreActivity extends AppCompatActivity {
     }
     */
 }
-
-class Game {
+class Game{
     int select;//プレイヤーが選んだドア
     int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
     int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
@@ -196,14 +191,26 @@ class Game {
     Game() {
         select=0;
     }
+    //プレイヤーに選択されているドアのidを返す関数
+    int idSearch() {
+        int id = 0;
+        for (int i = 0; i < 99; i++) {
+            //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoorをstaticにしたらうまく行ったが、問題はないのか？
+            if (door[i].choose == true) {
+                id = door[i].id;
+            }
+        }
+        return id;
+    }
 
     //1回目のドア選択(一旦切り離し!)
     void FirstChoice() {
-        int firstId;
+
+
         //ボタンを非表示にする
         //BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
         //button1.setVisibility(View.INVISIBLE);
-
+        firstId=idSearch();
     }
 
     //最後のドア選択

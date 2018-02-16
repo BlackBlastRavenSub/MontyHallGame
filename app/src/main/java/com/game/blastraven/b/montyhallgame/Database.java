@@ -17,13 +17,14 @@ import android.widget.Toast;
  */
 
 public class Database extends AppCompatActivity {
-    private final static String TAG_WRITE  = "write";
-    private final static String TAG_READ   = "read";
-    private final static String DB_NAME    = "test.db";//DB名
-    private final static String DB_TABLE   = "test";   //テーブル名
-    private final static int    DB_VERSION = 1;        //バージョン
+    private final static String TAG_WRITE = "write";
+    private final static String TAG_READ = "read";
+    private final static String DB_NAME = "test.db";//DB名
+    private final static String DB_TABLE = "test";   //テーブル名
+    private final static int DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
     private SQLiteDatabase db;//データベースオブジェクト
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +32,21 @@ public class Database extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
     }
+
     //ボタンクリックイベントの処理
     //DBへの書き込み
     public void writeing() {
         Toast.makeText(this, "書き込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = editText.getText().toString();
+            //テスト用のサンプルデータ
             String str = "BTB7";
             writeDB(str);
         } catch (Exception e) {
             Toast.makeText(this, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
         }
     }
+
     //DBからの読み込み
     public String reading() {
         //Toast.makeText(this, "読み込み中", Toast.LENGTH_LONG).show();
@@ -55,6 +59,7 @@ public class Database extends AppCompatActivity {
             return "読み込み失敗しました。";
         }
     }
+
     //データベースへの書き込み(6)
     private void writeDB(String info) throws Exception {
         ContentValues values = new ContentValues();
@@ -63,6 +68,7 @@ public class Database extends AppCompatActivity {
         int colNum = db.update(DB_TABLE, values, null, null);
         if (colNum == 0) db.insert(DB_TABLE, "", values);
     }
+
     //データベースからの読み込み(7)
     private String readDB() throws Exception {
         Cursor c = db.query(DB_TABLE, new String[]{"id", "info"},
@@ -73,6 +79,7 @@ public class Database extends AppCompatActivity {
         c.close();
         return str;
     }
+
     //データベースヘルパーの定義(1)
     private static class DBHelper extends SQLiteOpenHelper {
         //データベースヘルパーのコンストラクタ(2)
@@ -84,15 +91,14 @@ public class Database extends AppCompatActivity {
         //データベースの生成(3)
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("create table if not exists "+
-                    DB_TABLE+"(id text primary key,info text)");
+            db.execSQL("create table if not exists " +
+                    DB_TABLE + "(id text primary key,info text)");
         }
 
         //データベースのアップグレード(4)
         @Override
-        public void onUpgrade(SQLiteDatabase db,
-                              int oldVersion, int newVersion) {
-            db.execSQL("drop table if exists "+DB_TABLE);
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            db.execSQL("drop table if exists " + DB_TABLE);
             onCreate(db);
         }
     }
