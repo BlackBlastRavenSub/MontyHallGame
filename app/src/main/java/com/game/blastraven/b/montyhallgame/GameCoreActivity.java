@@ -195,7 +195,7 @@ class Game{
     int idSearch() {
         int id = 0;
         for (int i = 0; i < 99; i++) {
-            //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoorをstaticにしたらうまく行ったが、問題はないのか？
+            //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoor(18行目)をstaticにしたらうまく行ったが、問題はないのか？
             if (door[i].choose == true) {
                 id = door[i].id;
             }
