@@ -28,19 +28,18 @@ public class Database {
 
      Database(Context context) {
         //データベースオブジェクトの取得(5)
-        context=this.context;
+        this.context=context;
         DBHelper dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
-    //ボタンクリックイベントの処理
     //DBへの書き込み
     public void writeing() {
         Toast.makeText(context, "書き込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = editText.getText().toString();
             //テスト用のサンプルデータ
-            String str = "BTB7";
+            String str = "AAA";
             writeDB(str);
         } catch (Exception e) {
             Toast.makeText(context, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
@@ -79,7 +78,6 @@ public class Database {
         c.close();
         return str;
     }
-
     //データベースヘルパーの定義(1)
     private static class DBHelper extends SQLiteOpenHelper {
         //データベースヘルパーのコンストラクタ(2)
@@ -87,7 +85,6 @@ public class Database {
             //データベースの名前、ファクトリー、バージョンの設定
             super(context, DB_NAME, null, DB_VERSION);
         }
-
         //データベースの生成(3)
         @Override
         public void onCreate(SQLiteDatabase db) {

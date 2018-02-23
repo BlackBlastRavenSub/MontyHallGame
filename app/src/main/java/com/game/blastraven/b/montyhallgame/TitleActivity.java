@@ -38,7 +38,6 @@ public class TitleActivity extends AppCompatActivity {
         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show();
     }
 
-
     //Android端末の戻るボタン
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if(keyCode==KeyEvent.KEYCODE_BACK){

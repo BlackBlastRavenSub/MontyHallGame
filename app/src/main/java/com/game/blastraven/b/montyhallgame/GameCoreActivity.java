@@ -3,24 +3,39 @@ package com.game.blastraven.b.montyhallgame;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-//これで良い・・・のか？
-import static com.game.blastraven.b.montyhallgame.GameCoreActivity.door;
-
 public class GameCoreActivity extends AppCompatActivity {
-    Database database = new Database(this);
-    Game game = new Game();
-    static Door[] door=new Door[100];
+    TEST test = new TEST() {
+        @Override
+        public void disableButton() {
+            BootstrapButton button1 = findViewById(R.id.bootstrapDoor1);
+            button1.setVisibility(View.INVISIBLE);
+        }
+        @Override
+        public int idSearch() {
+            int id = 0;
+            for (int i = 0; i < 99; i++) {
+                //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoor(18行目)をstaticにしたらうまく行ったが、問題はないのか？
+                if (door[i].choose == true) {
+                    id = door[i].id;
+                }
+            }
+            return id;
+        }
+    };
+    Database database;
+    Game game = new Game(test);
+    Door[] door=new Door[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        database=new Database(this);
         for (int i = 0; i < 99; i++) {
-            door[i] = new Door(i + 1);
+            door[i] = new Door(i + 1,test);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
@@ -36,7 +51,8 @@ public class GameCoreActivity extends AppCompatActivity {
     }
 
     public void reading(View view) {
-        database.reading();
+        String testString=database.reading();
+        Toast.makeText(this,testString, Toast.LENGTH_LONG).show();
     }
 
 
@@ -48,71 +64,45 @@ public class GameCoreActivity extends AppCompatActivity {
 
     //各ボタンを押したときの動作
     public void buttonclick(View view) {
+        //共通の処理
+        for (int i = 0; i < 99; i++) {
+            door[i].choose = false;
+        }
         //押されたボタンごとに個別の動作
         switch (view.getId()) {
             case R.id.bootstrapDoor1:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[0].choose = true;
                 break;
             case R.id.bootstrapDoor2:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[1].choose = true;
                 break;
             case R.id.bootstrapDoor3:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[2].choose = true;
                 break;
             case R.id.bootstrapDoor4:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[3].choose = true;
                 break;
             case R.id.bootstrapDoor5:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[4].choose = true;
                 break;
             case R.id.bootstrapDoor6:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[5].choose = true;
                 break;
             case R.id.bootstrapDoor7:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[6].choose = true;
                 break;
             case R.id.bootstrapDoor8:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[7].choose = true;
                 break;
             case R.id.bootstrapDoor9:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[8].choose = true;
                 break;
             case R.id.bootstrapDoor10:
-                for (int i = 0; i < 99; i++) {
-                    door[i].choose = false;
-                }
                 door[9].choose = true;
                 break;
         }
-        //どのボタンが押されてもこの部分の処理は行われる
-        game.select = game.idSearch();
+        //共通の処理
+        game.select = test.idSearch();
         screenUpdate();
     }
     /*ボタン旧案
@@ -187,30 +177,18 @@ class Game{
     String stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
     int score = 0;//現在のプレイヤーのスキル
+    TEST test;
 
-    Game() {
+    Game(TEST test) {
         select=0;
+        this.test=test;
     }
-    //プレイヤーに選択されているドアのidを返す関数
-    int idSearch() {
-        int id = 0;
-        for (int i = 0; i < 99; i++) {
-            //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoor(18行目)をstaticにしたらうまく行ったが、問題はないのか？
-            if (door[i].choose == true) {
-                id = door[i].id;
-            }
-        }
-        return id;
-    }
+
+
 
     //1回目のドア選択(一旦切り離し!)
     void FirstChoice() {
-
-
-        //ボタンを非表示にする
-        //BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
-        //button1.setVisibility(View.INVISIBLE);
-        firstId=idSearch();
+        firstId=test.idSearch();
     }
 
     //最後のドア選択
@@ -220,26 +198,28 @@ class Game{
 
 }
 
-class Door extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+class Door{
     final int id;//ドアの固有ID
     boolean choose = false;//プレイヤーはこのドアを選んだか?
     boolean open = false;//結局ドアは今空いているのか?
     boolean correct = false;//これは正解のドアか?
+    TEST test;
 
-    Door(int id) {
+    Door(int id,TEST test) {
         this.id = id;
+        this.test=test;
     }
 
-    void bootstrapDoor2(View view) {
+    void bootstrapDoor2() {
         //ボタンを非表示にする
-        BootstrapButton button1 = this.findViewById(R.id.bootstrapDoor1);
-        button1.setVisibility(View.INVISIBLE);
+        test.disableButton();
     }
+}
+interface TEST {
+    //ボタンを非表示にする
+    void disableButton();
+    //プレイヤーに選択されているドアのidを返す関数
+    int idSearch();
 }
 /*
  public void writeing(View view) {
