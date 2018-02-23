@@ -19,27 +19,27 @@ import android.widget.Toast;
 public class Database {
     private final static String TAG_WRITE = "write";
     private final static String TAG_READ = "read";
-    private final static String DB_NAME = "test.db";//DB名
-    private final static String DB_TABLE = "test";   //テーブル名
+    private final static String DB_NAME = "subcode.db";//DB名
+    private final static String DB_TABLE = "subcode";   //テーブル名
     private final static int DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
     private SQLiteDatabase db;//データベースオブジェクト
-    private Context context =null;
+    private Context context = null;
 
-     Database(Context context) {
+    Database(Context context) {
         //データベースオブジェクトの取得(5)
-        this.context=context;
+        this.context = context;
         DBHelper dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
     //DBへの書き込み
-    public void writeing() {
+    public void writeing(String string) {
         Toast.makeText(context, "書き込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = editText.getText().toString();
             //テスト用のサンプルデータ
-            String str = "AAA";
+            String str = string;
             writeDB(str);
         } catch (Exception e) {
             Toast.makeText(context, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
@@ -78,6 +78,7 @@ public class Database {
         c.close();
         return str;
     }
+
     //データベースヘルパーの定義(1)
     private static class DBHelper extends SQLiteOpenHelper {
         //データベースヘルパーのコンストラクタ(2)
@@ -85,6 +86,7 @@ public class Database {
             //データベースの名前、ファクトリー、バージョンの設定
             super(context, DB_NAME, null, DB_VERSION);
         }
+
         //データベースの生成(3)
         @Override
         public void onCreate(SQLiteDatabase db) {

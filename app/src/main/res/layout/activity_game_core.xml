@@ -181,12 +181,12 @@
         app:showOutline="false" />
 
     <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/write"
+        android:id="@+id/writeing"
         android:layout_width="154dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="writeing"
+        android:onClick="database"
         app:bootstrapBrand="success"
         app:bootstrapSize="lg"
         app:bootstrapText="書き込み"
@@ -197,12 +197,12 @@
         app:showOutline="false" />
 
     <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/read"
+        android:id="@+id/reading"
         android:layout_width="154dp"
         android:layout_height="42dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="8dp"
-        android:onClick="reading"
+        android:onClick="database"
         app:bootstrapBrand="success"
         app:bootstrapSize="lg"
         app:bootstrapText="読み込み"

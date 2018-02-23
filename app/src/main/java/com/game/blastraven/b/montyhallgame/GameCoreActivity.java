@@ -9,60 +9,77 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class GameCoreActivity extends AppCompatActivity {
-    TEST test = new TEST() {
+    //インターフェイスの実装と処理の記述
+    Subcode subcode = new Subcode() {
+        //interface Subcodeのオーバーライド
         @Override
         public void disableButton() {
             BootstrapButton button1 = findViewById(R.id.bootstrapDoor1);
             button1.setVisibility(View.INVISIBLE);
         }
+
+        //interface Subcodeのオーバーライド
         @Override
         public int idSearch() {
             int id = 0;
             for (int i = 0; i < 99; i++) {
-                //door[i].chooseは別クラスにあるから呼べない・・・import分に追加をしてdoor(18行目)をstaticにしたらうまく行ったが、問題はないのか？
                 if (door[i].choose == true) {
                     id = door[i].id;
                 }
             }
             return id;
         }
+
+        @Override
+        public void writeing(String finalscore) {
+            database.writeing(finalscore);
+        }
+
+        @Override
+        public void reading() {
+            database.reading();
+        }
     };
     Database database;
-    Game game = new Game(test);
-    Door[] door=new Door[100];
+    Game game = new Game(subcode);
+    Door[] door = new Door[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        database=new Database(this);
+        database = new Database(this);
         for (int i = 0; i < 99; i++) {
-            door[i] = new Door(i + 1,test);
+            door[i] = new Door(i + 1, subcode);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
         TextView game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
-        //String datacatch = database.reading();
+        switch (game.stage) {
+            case 1:
+                game.GameStart();
+                break;
+            case 2:
+                game.FirstChoice();
+                break;
+            case 3:
+                game.FinalChoice();
+                break;
+        }
+
     }
 
     //public void writeing(View view) {game_core.setText(Database.reading());}
-    public void writeing(View view) {
-        database.writeing();
-    }
-
-    public void reading(View view) {
-        String testString=database.reading();
-        Toast.makeText(this,testString, Toast.LENGTH_LONG).show();
-    }
 
 
-    void screenUpdate(){
+    void screenUpdate() {
         TextView game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
     }
 
     //各ボタンを押したときの動作
+    //ドアボタン
     public void buttonclick(View view) {
         //共通の処理
         for (int i = 0; i < 99; i++) {
@@ -70,6 +87,7 @@ public class GameCoreActivity extends AppCompatActivity {
         }
         //押されたボタンごとに個別の動作
         switch (view.getId()) {
+
             case R.id.bootstrapDoor1:
                 door[0].choose = true;
                 break;
@@ -102,10 +120,10 @@ public class GameCoreActivity extends AppCompatActivity {
                 break;
         }
         //共通の処理
-        game.select = test.idSearch();
+        game.select = subcode.idSearch();
         screenUpdate();
-    }
-    /*ボタン旧案
+
+        /*ボタン旧案
     public void bootstrapDoor1(View view) {
         for(int i=0;i<99;i++){
             door[i].choose=false;
@@ -168,27 +186,44 @@ public class GameCoreActivity extends AppCompatActivity {
         door[9].choose=true;
     }
     */
+    }
+
+    //書き込み/読み込みボタン(テスト用)
+    public void database(View view) {
+        switch (view.getId()) {
+            case R.id.writeing:
+                database.writeing("Dummy");
+                break;
+            case R.id.reading:
+                //database.reading();
+                Toast.makeText(this, database.reading(), Toast.LENGTH_LONG).show();
+                break;
+        }
+    }
 }
-class Game{
+
+class Game {
     int select;//プレイヤーが選んだドア
     int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
     int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
     int level;//現在のステージ
-    String stage;//現在の段階
+    int stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
-    int score = 0;//現在のプレイヤーのスキル
-    TEST test;
+    int score = 0;//現在のプレイヤーのスコア
+    Subcode subcode;
 
-    Game(TEST test) {
-        select=0;
-        this.test=test;
+    Game(Subcode subcode) {
+        select = 0;
+        this.subcode = subcode;
     }
 
+    //スタート
+    void GameStart() {
+    }
 
-
-    //1回目のドア選択(一旦切り離し!)
+    //1回目のドア選択
     void FirstChoice() {
-        firstId=test.idSearch();
+        firstId = subcode.idSearch();
     }
 
     //最後のドア選択
@@ -196,30 +231,48 @@ class Game{
 
     }
 
+    void StageClear() {
+    }
+
+    void GameSet() {
+        String finalscore = String.valueOf(score);
+        subcode.writeing(finalscore);
+
+    }
+
+    void GameOver() {
+    }
 }
 
-class Door{
+class Door {
     final int id;//ドアの固有ID
     boolean choose = false;//プレイヤーはこのドアを選んだか?
     boolean open = false;//結局ドアは今空いているのか?
     boolean correct = false;//これは正解のドアか?
-    TEST test;
+    Subcode subcode;
 
-    Door(int id,TEST test) {
+    Door(int id, Subcode subcode) {
         this.id = id;
-        this.test=test;
+        this.subcode = subcode;
     }
 
     void bootstrapDoor2() {
         //ボタンを非表示にする
-        test.disableButton();
+        subcode.disableButton();
     }
 }
-interface TEST {
-    //ボタンを非表示にする
+
+//処理の移譲
+interface Subcode {
+    //ボタンを非表示にする(テスト用)
     void disableButton();
+
     //プレイヤーに選択されているドアのidを返す関数
     int idSearch();
+
+    void writeing(String score);
+
+    void reading();
 }
 /*
  public void writeing(View view) {
@@ -241,7 +294,7 @@ interface TEST {
             Toast.makeText(this, "Oready", Toast.LENGTH_LONG).show();
         }
         //ファイルをオープン
-        File tempfile =new File(temppath,"TEST.txt");
+        File tempfile =new File(temppath,"Subcode.txt");
         FileWriter output =null;
         try{
             output =new FileWriter(tempfile,true);
