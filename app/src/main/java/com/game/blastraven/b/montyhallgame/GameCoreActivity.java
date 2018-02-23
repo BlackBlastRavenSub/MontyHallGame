@@ -13,7 +13,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import static com.game.blastraven.b.montyhallgame.GameCoreActivity.door;
 
 public class GameCoreActivity extends AppCompatActivity {
-    Database database = new Database();
+    Database database = new Database(this);
     Game game = new Game();
     static Door[] door=new Door[100];
 

@@ -16,7 +16,7 @@ import android.widget.Toast;
  * Created by shotaro on 2018/02/04.
  */
 
-public class Database extends AppCompatActivity {
+public class Database {
     private final static String TAG_WRITE = "write";
     private final static String TAG_READ = "read";
     private final static String DB_NAME = "test.db";//DB名
@@ -24,26 +24,26 @@ public class Database extends AppCompatActivity {
     private final static int DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
     private SQLiteDatabase db;//データベースオブジェクト
+    private Context context =null;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+     Database(Context context) {
         //データベースオブジェクトの取得(5)
-        DBHelper dbHelper = new DBHelper(this);
+        context=this.context;
+        DBHelper dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
     //ボタンクリックイベントの処理
     //DBへの書き込み
     public void writeing() {
-        Toast.makeText(this, "書き込み中", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "書き込み中", Toast.LENGTH_LONG).show();
         try {
             //String str = editText.getText().toString();
             //テスト用のサンプルデータ
             String str = "BTB7";
             writeDB(str);
         } catch (Exception e) {
-            Toast.makeText(this, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "書き込みに失敗しました！", Toast.LENGTH_LONG).show();
         }
     }
 
