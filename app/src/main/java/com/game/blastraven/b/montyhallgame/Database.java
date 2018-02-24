@@ -19,8 +19,8 @@ import android.widget.Toast;
 public class Database {
     private final static String TAG_WRITE = "write";
     private final static String TAG_READ = "read";
-    private final static String DB_NAME = "subcode.db";//DB名
-    private final static String DB_TABLE = "subcode";   //テーブル名
+    private final static String DB_NAME = "databank.db";//DB名
+    private final static String DB_TABLE = "databank";   //テーブル名
     private final static int DB_VERSION = 1;        //バージョン
     private EditText editText;//エディットテキスト
     private SQLiteDatabase db;//データベースオブジェクト
@@ -50,8 +50,6 @@ public class Database {
     public String reading() {
         //Toast.makeText(this, "読み込み中", Toast.LENGTH_LONG).show();
         try {
-            //String str = readDB();
-            //editText.setText(str);
             return readDB();
 
         } catch (Exception e) {

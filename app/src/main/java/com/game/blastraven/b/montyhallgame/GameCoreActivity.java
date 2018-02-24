@@ -43,6 +43,8 @@ public class GameCoreActivity extends AppCompatActivity {
     Database database;
     Game game = new Game(subcode);
     Door[] door = new Door[100];
+    //画面テキストを変更するためにテキストビューを指定
+    TextView game_core = this.findViewById(R.id.textView);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,26 +58,38 @@ public class GameCoreActivity extends AppCompatActivity {
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
         switch (game.stage) {
-            case 1:
+            case "start":
                 game.GameStart();
                 break;
-            case 2:
+            case "firstchoice":
                 game.FirstChoice();
                 break;
-            case 3:
+            case "finalchoice":
                 game.FinalChoice();
+                break;
+            case "StageClear":
+                game.StageClear();
+                break;
+            case "GameOver":
+                game.GameOver();
+                break;
+            case "GameSet":
+                game.GameSet();
                 break;
         }
 
     }
 
     //public void writeing(View view) {game_core.setText(Database.reading());}
-
-
-    void screenUpdate() {
-        TextView game_core = this.findViewById(R.id.textView);
+    void changetext() {
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
+
+    }
+
+    void screenUpdate() {
+
+
     }
 
     //各ボタンを押したときの動作
@@ -207,7 +221,7 @@ class Game {
     int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
     int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
     int level;//現在のステージ
-    int stage;//現在の段階
+    String stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
     int score = 0;//現在のプレイヤーのスコア
     Subcode subcode;
