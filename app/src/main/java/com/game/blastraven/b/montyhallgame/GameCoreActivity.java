@@ -232,7 +232,7 @@ class Game {
     Game(Subcode subcode) {
         select = 0;
         this.subcode = subcode;
-        this.stage="start";
+        this.stage="outofrange";
     }
 
     //スタート
