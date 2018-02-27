@@ -57,6 +57,9 @@ public class GameCoreActivity extends AppCompatActivity {
         TextView game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
+        if(game.stage==null){
+            game.stage="outodrange";
+        }
         switch (game.stage) {
             case "start":
                 game.GameStart();
@@ -229,6 +232,7 @@ class Game {
     Game(Subcode subcode) {
         select = 0;
         this.subcode = subcode;
+        this.stage="start";
     }
 
     //スタート
