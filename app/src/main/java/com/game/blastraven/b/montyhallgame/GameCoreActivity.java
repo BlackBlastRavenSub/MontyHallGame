@@ -44,7 +44,7 @@ public class GameCoreActivity extends AppCompatActivity {
     Game game = new Game(subcode);
     Door[] door = new Door[100];
     //画面テキストを変更するためにテキストビューを指定
-    TextView game_core = this.findViewById(R.id.textView);
+    TextView game_core ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class GameCoreActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
-        TextView game_core = this.findViewById(R.id.textView);
+        game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
         if(game.stage==null){
@@ -85,13 +85,13 @@ public class GameCoreActivity extends AppCompatActivity {
 
     //public void writeing(View view) {game_core.setText(Database.reading());}
     void changetext() {
-        String game_core_view = getString(R.string.game_core, game.select);
-        game_core.setText(game_core_view);
+
 
     }
 
     void screenUpdate() {
-
+        String game_core_view = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_view);
 
     }
 
