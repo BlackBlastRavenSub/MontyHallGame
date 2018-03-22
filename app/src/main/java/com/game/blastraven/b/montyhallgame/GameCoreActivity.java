@@ -39,6 +39,11 @@ public class GameCoreActivity extends AppCompatActivity {
         public void reading() {
             database.reading();
         }
+        @Override
+        public void textChange(String name ,String input, String output){
+            TextView name = findViewById(R.id.output);
+            name.setText(R.string.input);
+        }
     };
     Database database;
     Game game = new Game(subcode);
@@ -237,8 +242,7 @@ class Game {
 
     //スタート
     void GameStart() {
-        String game_core_view = getString(R.string.game_core, game.select);
-        game_core.setText(game_core_view);
+        subcode.textChange("test","gamestart","textView");
     }
 
     //1回目のドア選択
@@ -293,6 +297,8 @@ interface Subcode {
     void writeing(String score);
 
     void reading();
+
+    void textChange(String name,String input,String output);
 }
 /*
  public void writeing(View view) {
