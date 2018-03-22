@@ -58,7 +58,7 @@ public class GameCoreActivity extends AppCompatActivity {
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
         if(game.stage==null){
-            game.stage="outodrange";
+            game.stage="outofrange";
         }
         switch (game.stage) {
             case "start":
@@ -90,10 +90,10 @@ public class GameCoreActivity extends AppCompatActivity {
     }
 
     void screenUpdate() {
-        String game_core_view = getString(R.string.game_core, game.select);
-        game_core.setText(game_core_view);
-
+        String game_core_setview = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_setview);
     }
+
 
     //各ボタンを押したときの動作
     //ドアボタン
@@ -237,6 +237,8 @@ class Game {
 
     //スタート
     void GameStart() {
+        String game_core_view = getString(R.string.game_core, game.select);
+        game_core.setText(game_core_view);
     }
 
     //1回目のドア選択
