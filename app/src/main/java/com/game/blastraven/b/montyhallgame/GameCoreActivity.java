@@ -39,17 +39,29 @@ public class GameCoreActivity extends AppCompatActivity {
         public void reading() {
             database.reading();
         }
+
         @Override
-        public void textChange(String name ,String input, String output){
-            TextView name = findViewById(R.id.output);
-            name.setText(R.string.input);
+        public void textChange(String name, String input, String output) {
+            //TextView name = findViewById(R.id.output);
+            //name.setText(R.string.input);
         }
     };
     Database database;
     Game game = new Game(subcode);
     Door[] door = new Door[100];
     //画面テキストを変更するためにテキストビューを指定
-    TextView game_core ;
+    TextView game_core;
+    //bootstrapのドアをプログラムから制御するために名前付け
+    BootstrapButton DoorButton1;
+    BootstrapButton DoorButton2;
+    BootstrapButton DoorButton3;
+    BootstrapButton DoorButton4;
+    BootstrapButton DoorButton5;
+    BootstrapButton DoorButton6;
+    BootstrapButton DoorButton7;
+    BootstrapButton DoorButton8;
+    BootstrapButton DoorButton9;
+    BootstrapButton DoorButton10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +71,22 @@ public class GameCoreActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
+        //bootstrapのドアをプログラムから制御するために名前付け(続き)
+        DoorButton1 = findViewById(R.id.bootstrapDoor1);
+        DoorButton2 = findViewById(R.id.bootstrapDoor2);
+        DoorButton3 = findViewById(R.id.bootstrapDoor3);
+        DoorButton4 = findViewById(R.id.bootstrapDoor4);
+        DoorButton5 = findViewById(R.id.bootstrapDoor5);
+        DoorButton6 = findViewById(R.id.bootstrapDoor6);
+        DoorButton7 = findViewById(R.id.bootstrapDoor7);
+        DoorButton8 = findViewById(R.id.bootstrapDoor8);
+        DoorButton9 = findViewById(R.id.bootstrapDoor9);
+        DoorButton10 = findViewById(R.id.bootstrapDoor10);
         game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
-        if(game.stage==null){
-            game.stage="outofrange";
+        if (game.stage == null) {
+            game.stage = "outofrange";
         }
         switch (game.stage) {
             case "start":
@@ -89,10 +112,6 @@ public class GameCoreActivity extends AppCompatActivity {
     }
 
     //public void writeing(View view) {game_core.setText(Database.reading());}
-    void changetext() {
-
-
-    }
 
     void screenUpdate() {
         String game_core_setview = getString(R.string.game_core, game.select);
@@ -112,6 +131,7 @@ public class GameCoreActivity extends AppCompatActivity {
 
             case R.id.bootstrapDoor1:
                 door[0].choose = true;
+                DoorButton1.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor2:
                 door[1].choose = true;
@@ -231,39 +251,51 @@ class Game {
     int level;//現在のステージ
     String stage;//現在の段階
     int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
+    int correct;//正解のドア
     int score = 0;//現在のプレイヤーのスコア
     Subcode subcode;
 
     Game(Subcode subcode) {
         select = 0;
         this.subcode = subcode;
-        this.stage="outofrange";
+        this.stage = "outofrange";
     }
 
     //スタート
     void GameStart() {
-        subcode.textChange("test","gamestart","textView");
+        //正解のドアとダミーのドアの決定
+        correct = 1 + new java.util.Random().nextInt(100);
+        do {
+            dummy = 1 + new java.util.Random().nextInt(100);
+        }
+        while (correct == dummy);
+        subcode.textChange("test", "gamestart", "textView");
     }
 
     //1回目のドア選択
     void FirstChoice() {
         firstId = subcode.idSearch();
+        DoorButton1.setShowOutline(true);
     }
 
     //最後のドア選択
     void FinalChoice() {
+        finalId = subcode.idSearch();
 
     }
 
+    //成功した!
     void StageClear() {
     }
 
+    //成功して終了した!
     void GameSet() {
         String finalscore = String.valueOf(score);
         subcode.writeing(finalscore);
 
     }
 
+    //失敗した!
     void GameOver() {
     }
 }
@@ -272,7 +304,7 @@ class Door {
     final int id;//ドアの固有ID
     boolean choose = false;//プレイヤーはこのドアを選んだか?
     boolean open = false;//結局ドアは今空いているのか?
-    boolean correct = false;//これは正解のドアか?
+    //boolean correct = false;//これは正解のドアか?
     Subcode subcode;
 
     Door(int id, Subcode subcode) {
@@ -298,7 +330,7 @@ interface Subcode {
 
     void reading();
 
-    void textChange(String name,String input,String output);
+    void textChange(String name, String input, String output);
 }
 /*
  public void writeing(View view) {
