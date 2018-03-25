@@ -52,16 +52,16 @@ public class GameCoreActivity extends AppCompatActivity {
     //画面テキストを変更するためにテキストビューを指定
     TextView game_core;
     //bootstrapのドアをプログラムから制御するために名前付け
-    static BootstrapButton DoorButton1;
-    static BootstrapButton DoorButton2;
-    static BootstrapButton DoorButton3;
-    static BootstrapButton DoorButton4;
-    static BootstrapButton DoorButton5;
-    static BootstrapButton DoorButton6;
-    static BootstrapButton DoorButton7;
-    static BootstrapButton DoorButton8;
-    static BootstrapButton DoorButton9;
-    static BootstrapButton DoorButton10;
+    BootstrapButton DoorButton1;
+    BootstrapButton DoorButton2;
+    BootstrapButton DoorButton3;
+    BootstrapButton DoorButton4;
+    BootstrapButton DoorButton5;
+    BootstrapButton DoorButton6;
+    BootstrapButton DoorButton7;
+    BootstrapButton DoorButton8;
+    BootstrapButton DoorButton9;
+    BootstrapButton DoorButton10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,43 +132,33 @@ public class GameCoreActivity extends AppCompatActivity {
             case R.id.bootstrapDoor1:
                 door[0].choose = true;
                 DoorButton1.setShowOutline(true);
-                //DoorButton1.setButtonMode();
                 break;
             case R.id.bootstrapDoor2:
                 door[1].choose = true;
-                DoorButton2.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor3:
                 door[2].choose = true;
-                DoorButton3.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor4:
                 door[3].choose = true;
-                DoorButton4.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor5:
                 door[4].choose = true;
-                DoorButton5.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor6:
                 door[5].choose = true;
-                DoorButton6.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor7:
                 door[6].choose = true;
-                DoorButton7.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor8:
                 door[7].choose = true;
-                DoorButton8.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor9:
                 door[8].choose = true;
-                DoorButton9.setShowOutline(true);
                 break;
             case R.id.bootstrapDoor10:
                 door[9].choose = true;
-                DoorButton10.setShowOutline(true);
                 break;
         }
         //共通の処理
@@ -252,18 +242,79 @@ public class GameCoreActivity extends AppCompatActivity {
                 break;
         }
     }
-    //ボタンの色をもとに戻す
-    void buttonColorReset(){
-        DoorButton1.setShowOutline(false);
-        DoorButton2.setShowOutline(false);
-        DoorButton3.setShowOutline(false);
-        DoorButton4.setShowOutline(false);
-        DoorButton5.setShowOutline(false);
-        DoorButton6.setShowOutline(false);
-        DoorButton7.setShowOutline(false);
-        DoorButton8.setShowOutline(false);
-        DoorButton9.setShowOutline(false);
-        DoorButton10.setShowOutline(false);
+}
+
+class Game {
+    int select;//プレイヤーが選んだドア
+    int firstId;//プレイヤーが最初に選んだドアのidを保存しておく変数
+    int finalId;//プレイヤーが最終的にに選んだドアのidを保存しておく変数
+    int level;//現在のステージ
+    String stage;//現在の段階
+    int dummy;//プレイヤーが1回目で正解のドアを選んだ際に指定される不正解のドア
+    int correct;//正解のドア
+    int score = 0;//現在のプレイヤーのスコア
+    Subcode subcode;
+
+    Game(Subcode subcode) {
+        select = 0;
+        this.subcode = subcode;
+        this.stage = "outofrange";
+    }
+
+    //スタート
+    void GameStart() {
+        //正解のドアとダミーのドアの決定
+        correct = 1 + new java.util.Random().nextInt(100);
+        do {
+            dummy = 1 + new java.util.Random().nextInt(100);
+        }
+        while (correct == dummy);
+        subcode.textChange("test", "gamestart", "textView");
+    }
+
+    //1回目のドア選択
+    void FirstChoice() {
+        firstId = subcode.idSearch();
+        DoorButton1.setShowOutline(true);
+    }
+
+    //最後のドア選択
+    void FinalChoice() {
+        finalId = subcode.idSearch();
+
+    }
+
+    //成功した!
+    void StageClear() {
+    }
+
+    //成功して終了した!
+    void GameSet() {
+        String finalscore = String.valueOf(score);
+        subcode.writeing(finalscore);
+
+    }
+
+    //失敗した!
+    void GameOver() {
+    }
+}
+
+class Door {
+    final int id;//ドアの固有ID
+    boolean choose = false;//プレイヤーはこのドアを選んだか?
+    boolean open = false;//結局ドアは今空いているのか?
+    //boolean correct = false;//これは正解のドアか?
+    Subcode subcode;
+
+    Door(int id, Subcode subcode) {
+        this.id = id;
+        this.subcode = subcode;
+    }
+
+    void bootstrapDoor2() {
+        //ボタンを非表示にする
+        subcode.disableButton();
     }
 }
 
@@ -281,3 +332,70 @@ interface Subcode {
 
     void textChange(String name, String input, String output);
 }
+/*
+ public void writeing(View view) {
+        writeFile("testing!!");
+    }
+    public void reading(View view) {
+        //readFile(getFilesDir());
+    }
+
+    //ファイルの書き込みクラス
+    private void writeFile(String contents){
+        //ファイルを出力するフォルダの作成
+        File temppath=new File(Environment.getExternalStorageDirectory().getPath() + "/"+"TESTFILE");
+        //File temppath=new File(getFilesDir(), "TESTFILE");
+        if (temppath.exists() != true){
+            temppath.mkdirs();
+            Toast.makeText(this, "cleate", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this, "Oready", Toast.LENGTH_LONG).show();
+        }
+        //ファイルをオープン
+        File tempfile =new File(temppath,"Subcode.txt");
+        FileWriter output =null;
+        try{
+            output =new FileWriter(tempfile,true);
+            //書き込む!!
+            output.write(contents);
+            output.write("\n");
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if(output !=null){
+                try{
+                    output.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    //ファイルの読み込みクラス
+    private void readFile(){
+        try{
+            //Uriからファイルのパスを取得してFileを作成する
+            File file =new File(Environment.getExternalStorageDirectory().getPath() + "/"+"TESTFILE");
+            mTextFilename.setText(file.getName());
+            //FileからReaderクラスを作成
+            BufferedReader bufferReader=new BufferedReader(new FileReader(file));
+            String StringBuffer;
+            String stringText="";
+            //一行ずつ読み込みString形式のデータを作成
+            while ((StringBuffer=bufferReader.readLine()) != null){
+                stringText+=StringBuffer;
+            }
+            bufferReader.close();
+            mTextContents.setText(stringText);
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            mTextContents.setText(e.toString());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            mTextContents.setText(e.toString());
+        }
+    }
+ */
