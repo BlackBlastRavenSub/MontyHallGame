@@ -15,11 +15,13 @@ public class Game {
     int correct;//正解のドア
     int score = 0;//現在のプレイヤーのスコア
     Subcode subcode;
+    Database database;
 
     Game(Subcode subcode) {
         select = 0;
         this.subcode = subcode;
         this.stage = "outofrange";
+        database = new Database(this);
     }
 
     //スタート
@@ -52,6 +54,7 @@ public class Game {
     void GameSet() {
         String finalscore = String.valueOf(score);
         subcode.writeing(finalscore);
+        database.writeing(finalscore);
 
     }
 
