@@ -4,212 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.game.blastraven.b.montyhallgame.GameCoreActivity">
+    tools:context="com.game.blastraven.b.montyhallgame.GameCoreActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="320dp"
+        android:layout_height="121dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="@string/game_core"
-        app:layout_constraintBottom_toTopOf="@+id/bootstrapDoor1"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/writeing" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor1"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="232dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア1"
-        app:buttonMode="regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor2"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="232dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア2"
-        app:buttonMode="regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor3"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア3"
-        app:buttonMode="regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor1"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor4"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア4"
-        app:buttonMode="regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor2"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor5"
-        android:layout_width="155dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア5"
-        app:buttonMode="regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor3"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor6"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア6"
-        app:buttonMode="regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor4"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor7"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア7"
-        app:buttonMode="regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor5"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor8"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア8"
-        app:buttonMode="regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor6"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor9"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア9"
-        app:buttonMode="regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor7"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/bootstrapDoor10"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:onClick="buttonclick"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="ドア10"
-        app:buttonMode="regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapDoor8"
-        app:roundedCorners="true"
-        app:showOutline="false" />
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
+    <Button
         android:id="@+id/writeing"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="database"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="書き込み"
-        app:buttonMode="regular"
+        android:text="書き込み"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:roundedCorners="true"
-        app:showOutline="false" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.beardedhen.androidbootstrap.BootstrapButton
+    <Button
         android:id="@+id/reading"
-        android:layout_width="154dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:onClick="database"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="lg"
-        app:bootstrapText="読み込み"
-        app:buttonMode="regular"
+        android:text="読み込み"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:roundedCorners="true"
-        app:showOutline="false" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton1"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア1"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton3"
+        app:layout_constraintEnd_toStartOf="@+id/DoorButton2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton2"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア2"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton4"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton3"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア3"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton5"
+        app:layout_constraintEnd_toStartOf="@+id/DoorButton4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton4"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア4"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton6"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton5"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア5"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton7"
+        app:layout_constraintEnd_toStartOf="@+id/DoorButton6"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton6"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア6"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton8"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton7"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア7"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton9"
+        app:layout_constraintEnd_toStartOf="@+id/DoorButton8"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton8"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア8"
+        app:layout_constraintBottom_toTopOf="@+id/DoorButton10"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton9"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/DoorButton10"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/DoorButton10"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="buttonclick"
+        android:text="ドア10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 </android.support.constraint.ConstraintLayout>

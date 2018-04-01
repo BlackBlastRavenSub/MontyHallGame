@@ -406,4 +406,68 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
         }
     }
  */
+
+    /*ボタン旧案
+    public void bootstrapDoor1(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[0].choose=true;
+
+    }
+    public void bootstrapDoor2(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[1].choose=true;
+    }
+    public void bootstrapDoor3(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[2].choose=true;
+    }
+    public void bootstrapDoor4(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[3].choose=true;
+    }
+    public void bootstrapDoor5(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[4].choose=true;
+    }
+    public void bootstrapDoor6(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[5].choose=true;
+    }
+    public void bootstrapDoor7(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[6].choose=true;
+    }
+    public void bootstrapDoor8(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[7].choose=true;
+    }
+    public void bootstrapDoor9(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[8].choose=true;
+    }
+    public void bootstrapDoor10(View view) {
+        for(int i=0;i<99;i++){
+            door[i].choose=false;
+        }
+        door[9].choose=true;
+    }
+    */
 }

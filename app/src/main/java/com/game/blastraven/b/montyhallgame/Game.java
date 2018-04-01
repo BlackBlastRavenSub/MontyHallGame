@@ -21,7 +21,8 @@ public class Game {
         select = 0;
         this.subcode = subcode;
         this.stage = "outofrange";
-        database = new Database(this);
+        //database = new Database(this);
+
     }
 
     //スタート
@@ -43,7 +44,6 @@ public class Game {
     //最後のドア選択
     void FinalChoice() {
         finalId = subcode.idSearch();
-
     }
 
     //成功した!

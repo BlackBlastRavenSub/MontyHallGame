@@ -3,6 +3,7 @@ package com.game.blastraven.b.montyhallgame;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +15,7 @@ public class GameCoreActivity extends AppCompatActivity {
         //interface Subcodeのオーバーライド
         @Override
         public void disableButton() {
-            BootstrapButton button1 = findViewById(R.id.bootstrapDoor1);
-            button1.setVisibility(View.INVISIBLE);
+            DoorButton1.setVisibility(View.INVISIBLE);
         }
 
         //interface Subcodeのオーバーライド
@@ -52,16 +52,16 @@ public class GameCoreActivity extends AppCompatActivity {
     //画面テキストを変更するためにテキストビューを指定
     TextView game_core;
     //bootstrapのドアをプログラムから制御するために名前付け
-    static BootstrapButton DoorButton1;
-    static BootstrapButton DoorButton2;
-    static BootstrapButton DoorButton3;
-    static BootstrapButton DoorButton4;
-    static BootstrapButton DoorButton5;
-    static BootstrapButton DoorButton6;
-    static BootstrapButton DoorButton7;
-    static BootstrapButton DoorButton8;
-    static BootstrapButton DoorButton9;
-    static BootstrapButton DoorButton10;
+    static Button DoorButton1;
+    static Button DoorButton2;
+    static Button DoorButton3;
+    static Button DoorButton4;
+    static Button DoorButton5;
+    static Button DoorButton6;
+    static Button DoorButton7;
+    static Button DoorButton8;
+    static Button DoorButton9;
+    static Button DoorButton10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +72,16 @@ public class GameCoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_core);
         //bootstrapのドアをプログラムから制御するために名前付け(続き)
-        DoorButton1 = findViewById(R.id.bootstrapDoor1);
-        DoorButton2 = findViewById(R.id.bootstrapDoor2);
-        DoorButton3 = findViewById(R.id.bootstrapDoor3);
-        DoorButton4 = findViewById(R.id.bootstrapDoor4);
-        DoorButton5 = findViewById(R.id.bootstrapDoor5);
-        DoorButton6 = findViewById(R.id.bootstrapDoor6);
-        DoorButton7 = findViewById(R.id.bootstrapDoor7);
-        DoorButton8 = findViewById(R.id.bootstrapDoor8);
-        DoorButton9 = findViewById(R.id.bootstrapDoor9);
-        DoorButton10 = findViewById(R.id.bootstrapDoor10);
+        DoorButton1 = findViewById(R.id.DoorButton1);
+        DoorButton2 = findViewById(R.id.DoorButton2);
+        DoorButton3 = findViewById(R.id.DoorButton3);
+        DoorButton4 = findViewById(R.id.DoorButton4);
+        DoorButton5 = findViewById(R.id.DoorButton5);
+        DoorButton6 = findViewById(R.id.DoorButton6);
+        DoorButton7 = findViewById(R.id.DoorButton7);
+        DoorButton8 = findViewById(R.id.DoorButton8);
+        DoorButton9 = findViewById(R.id.DoorButton9);
+        DoorButton10 = findViewById(R.id.DoorButton10);
         game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.select);
         game_core.setText(game_core_view);
@@ -129,115 +129,41 @@ public class GameCoreActivity extends AppCompatActivity {
         //押されたボタンごとに個別の動作
         switch (view.getId()) {
 
-            case R.id.bootstrapDoor1:
+            case R.id.DoorButton1:
                 door[0].choose = true;
-                DoorButton1.setShowOutline(true);
-                //DoorButton1.setButtonMode();
+                database.writeing("Door1");
                 break;
-            case R.id.bootstrapDoor2:
+            case R.id.DoorButton2:
                 door[1].choose = true;
-                DoorButton2.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor3:
+            case R.id.DoorButton3:
                 door[2].choose = true;
-                DoorButton3.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor4:
+            case R.id.DoorButton4:
                 door[3].choose = true;
-                DoorButton4.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor5:
+            case R.id.DoorButton5:
                 door[4].choose = true;
-                DoorButton5.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor6:
+            case R.id.DoorButton6:
                 door[5].choose = true;
-                DoorButton6.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor7:
+            case R.id.DoorButton7:
                 door[6].choose = true;
-                DoorButton7.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor8:
+            case R.id.DoorButton8:
                 door[7].choose = true;
-                DoorButton8.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor9:
+            case R.id.DoorButton9:
                 door[8].choose = true;
-                DoorButton9.setShowOutline(true);
                 break;
-            case R.id.bootstrapDoor10:
+            case R.id.DoorButton10:
                 door[9].choose = true;
-                DoorButton10.setShowOutline(true);
                 break;
         }
         //共通の処理
         game.select = subcode.idSearch();
         screenUpdate();
-
-        /*ボタン旧案
-    public void bootstrapDoor1(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[0].choose=true;
-
-    }
-    public void bootstrapDoor2(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[1].choose=true;
-    }
-    public void bootstrapDoor3(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[2].choose=true;
-    }
-    public void bootstrapDoor4(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[3].choose=true;
-    }
-    public void bootstrapDoor5(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[4].choose=true;
-    }
-    public void bootstrapDoor6(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[5].choose=true;
-    }
-    public void bootstrapDoor7(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[6].choose=true;
-    }
-    public void bootstrapDoor8(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[7].choose=true;
-    }
-    public void bootstrapDoor9(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[8].choose=true;
-    }
-    public void bootstrapDoor10(View view) {
-        for(int i=0;i<99;i++){
-            door[i].choose=false;
-        }
-        door[9].choose=true;
-    }
-    */
     }
 
     //書き込み/読み込みボタン(テスト用)
@@ -252,18 +178,9 @@ public class GameCoreActivity extends AppCompatActivity {
                 break;
         }
     }
+
     //ボタンの色をもとに戻す
-    void buttonColorReset(){
-        DoorButton1.setShowOutline(false);
-        DoorButton2.setShowOutline(false);
-        DoorButton3.setShowOutline(false);
-        DoorButton4.setShowOutline(false);
-        DoorButton5.setShowOutline(false);
-        DoorButton6.setShowOutline(false);
-        DoorButton7.setShowOutline(false);
-        DoorButton8.setShowOutline(false);
-        DoorButton9.setShowOutline(false);
-        DoorButton10.setShowOutline(false);
+    void buttonColorReset() {
     }
 }
 
