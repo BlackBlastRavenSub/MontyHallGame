@@ -15,4 +15,5 @@
         \nあなたは何回連続で正解のドアを開けられますか!?(失敗した場合ハイスコアは記録されません!)</string>
     <string name="game_core">ドア%1$dが押されました</string>
     <string name="gamestart">ドアを1つ選んでください</string>
+    <string name="firstselect"></string>
 </resources>

@@ -39,6 +39,7 @@ public class Game {
     //1回目のドア選択
     void FirstChoice() {
         firstId = subcode.idSearch();
+
     }
 
     //最後のドア選択
