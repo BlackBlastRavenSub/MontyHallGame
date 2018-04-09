@@ -1,5 +1,7 @@
 package com.game.blastraven.b.montyhallgame;
 
+import android.view.View;
+
 /**
  * Created by KOGUMA on 2018/03/25.
  */
@@ -61,5 +63,8 @@ public class Game {
 
     //失敗した!
     void GameOver() {
+    }
+    void test(View DoorB1){
+        DoorB1.setVisibility(View.INVISIBLE);
     }
 }

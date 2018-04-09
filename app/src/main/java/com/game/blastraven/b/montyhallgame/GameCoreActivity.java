@@ -122,7 +122,6 @@ public class GameCoreActivity extends AppCompatActivity {
     //各ボタンを押したときの動作
     //ドアボタン
     public void buttonclick(View view) {
-        TEST Test=new TEST();
         //共通の処理
         for (int i = 0; i < 99; i++) {
             door[i].choose = false;
@@ -135,7 +134,7 @@ public class GameCoreActivity extends AppCompatActivity {
                 database.writeing("Door1");
 
                 //テスト
-                Test.test(DoorButton1);
+                game.test(DoorButton1);
                 break;
             case R.id.DoorButton2:
                 door[1].choose = true;
@@ -185,12 +184,6 @@ public class GameCoreActivity extends AppCompatActivity {
 
     //ボタンの色をもとに戻す
     void buttonColorReset() {
-    }
-}
-
-class TEST{
-    void test(View DoorB1){
-        DoorB1.setVisibility(View.INVISIBLE);
     }
 }
 
