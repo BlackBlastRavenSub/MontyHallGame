@@ -1,6 +1,7 @@
 package com.game.blastraven.b.montyhallgame;
 
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by KOGUMA on 2018/03/25.
@@ -67,5 +68,9 @@ public class Game {
     }
     void test(View DoorB1){
         DoorB1.setVisibility(View.INVISIBLE);
+    }
+    void textChange(View ){
+        TextView name = findViewById(R.id.output);
+        name.setText(R.string.input);
     }
 }
