@@ -35,7 +35,8 @@ public class Game {
             dummy = 1 + new java.util.Random().nextInt(100);
         }
         while (correct == dummy);
-        subcode.textChange("test", "gamestart", "textView");
+        GameCoreActivity.textChange("test", "gamestart", "textView");
+
     }
 
     //1回目のドア選択

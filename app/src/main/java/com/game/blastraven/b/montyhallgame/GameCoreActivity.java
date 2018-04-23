@@ -185,6 +185,12 @@ public class GameCoreActivity extends AppCompatActivity {
     //ボタンの色をもとに戻す
     void buttonColorReset() {
     }
+
+    //画面表示の変更
+    public void textChange(String name, String input, String output) {
+        TextView name = findViewById(R.id.output);
+        name.setText(R.string.input);
+    }
 }
 
 //処理の移譲
