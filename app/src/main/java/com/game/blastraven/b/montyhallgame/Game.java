@@ -69,8 +69,8 @@ public class Game {
     void test(View DoorB1){
         DoorB1.setVisibility(View.INVISIBLE);
     }
-    void textChange(View ){
-        TextView name = findViewById(R.id.output);
+    void textChange(){
+        TextView name = getString(R.id.output);
         name.setText(R.string.input);
     }
 }

@@ -187,9 +187,9 @@ public class GameCoreActivity extends AppCompatActivity {
     }
 
     //画面表示の変更
-    public void textChange(String name, String input, String output) {
-        TextView name = findViewById(R.id.output);
-        name.setText(R.string.input);
+    public void textChange(String input, String put) {
+        TextView textSet = findViewById(R.id.output);
+        textSet.setText(R.string.input);
     }
 }
 
