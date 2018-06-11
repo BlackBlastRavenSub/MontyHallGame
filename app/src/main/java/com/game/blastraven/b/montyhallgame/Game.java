@@ -36,7 +36,7 @@ public class Game {
             dummy = 1 + new java.util.Random().nextInt(100);
         }
         while (correct == dummy);
-        GameCoreActivity.textChange("test", "gamestart", "textView");
+        //GameCoreActivity.textChange("test", "gamestart", "textView");
 
     }
 
@@ -69,8 +69,10 @@ public class Game {
     void test(View DoorB1){
         DoorB1.setVisibility(View.INVISIBLE);
     }
+    /*
     void textChange(){
         TextView name = getString(R.id.output);
         name.setText(R.string.input);
     }
+    */
 }

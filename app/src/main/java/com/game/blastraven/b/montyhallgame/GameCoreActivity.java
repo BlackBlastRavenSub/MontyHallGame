@@ -187,10 +187,12 @@ public class GameCoreActivity extends AppCompatActivity {
     }
 
     //画面表示の変更
+    /*
     public void textChange(String input, String put) {
         TextView textSet = findViewById(R.id.output);
         textSet.setText(R.string.input);
     }
+    */
 }
 
 //処理の移譲

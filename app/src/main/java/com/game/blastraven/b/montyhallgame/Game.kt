@@ -5,6 +5,7 @@ import android.view.View
 /**
  * Created by NodaShotaro on 2018/04/24.
  */
+/*
 class Game internal constructor(internal var subcode: Subcode) {
     internal var select: Int = 0//プレイヤーが選んだドア
     internal var firstId: Int = 0//プレイヤーが最初に選んだドアのidを保存しておく変数
@@ -65,3 +66,4 @@ class Game internal constructor(internal var subcode: Subcode) {
 
     internal fun textChange() {}
 }
+*/
