@@ -1,12 +1,14 @@
 package com.game.blastraven.b.montyhallgame
 
 import android.view.View
+import android.widget.TextView
 
 /**
- * Created by NodaShotaro on 2018/04/24.
+ * Created by KOGUMA on 2018/03/25.
  */
-/*
+
 class Game internal constructor(internal var subcode: Subcode) {
+
     internal var select: Int = 0//プレイヤーが選んだドア
     internal var firstId: Int = 0//プレイヤーが最初に選んだドアのidを保存しておく変数
     internal var finalId: Int = 0//プレイヤーが最終的にに選んだドアのidを保存しておく変数
@@ -63,7 +65,9 @@ class Game internal constructor(internal var subcode: Subcode) {
     internal fun test(DoorB1: View) {
         DoorB1.visibility = View.INVISIBLE
     }
-
-    internal fun textChange() {}
+    /*
+    void textChange(){
+        TextView name = getString(R.id.output);
+        name.setText(R.string.input);
+    }*/
 }
-*/

@@ -83,29 +83,29 @@ public class GameCoreActivity extends AppCompatActivity {
         DoorButton9 = findViewById(R.id.DoorButton9);
         DoorButton10 = findViewById(R.id.DoorButton10);
         game_core = this.findViewById(R.id.textView);
-        String game_core_view = getString(R.string.game_core, game.select);
+        String game_core_view = getString(R.string.game_core, game.getSelect$production_sources_for_module_app());
         game_core.setText(game_core_view);
-        if (game.stage == null) {
-            game.stage = "outofrange";
+        if (game.getStage$production_sources_for_module_app() == null) {
+            game.setStage$production_sources_for_module_app("outofrange");
         }
-        switch (game.stage) {
+        switch (game.getStage$production_sources_for_module_app()) {
             case "start":
-                game.GameStart();
+                game.GameStart$production_sources_for_module_app();
                 break;
             case "Firstchoice":
-                game.FirstChoice();
+                game.FirstChoice$production_sources_for_module_app();
                 break;
             case "Finalchoice":
-                game.FinalChoice();
+                game.FinalChoice$production_sources_for_module_app();
                 break;
             case "StageClear":
-                game.StageClear();
+                game.StageClear$production_sources_for_module_app();
                 break;
             case "GameOver":
-                game.GameOver();
+                game.GameOver$production_sources_for_module_app();
                 break;
             case "GameSet":
-                game.GameSet();
+                game.GameSet$production_sources_for_module_app();
                 break;
         }
 
@@ -114,7 +114,7 @@ public class GameCoreActivity extends AppCompatActivity {
     //public void writeing(View view) {game_core.setText(Database.reading());}
 
     void screenUpdate() {
-        String game_core_setview = getString(R.string.game_core, game.select);
+        String game_core_setview = getString(R.string.game_core, game.getSelect$production_sources_for_module_app());
         game_core.setText(game_core_setview);
     }
 
@@ -134,7 +134,7 @@ public class GameCoreActivity extends AppCompatActivity {
                 database.writeing("Door1");
 
                 //テスト
-                game.test(DoorButton1);
+                game.test$production_sources_for_module_app(DoorButton1);
                 break;
             case R.id.DoorButton2:
                 door[1].choose = true;
@@ -165,7 +165,7 @@ public class GameCoreActivity extends AppCompatActivity {
                 break;
         }
         //共通の処理
-        game.select = subcode.idSearch();
+        game.setSelect$production_sources_for_module_app(subcode.idSearch());
         screenUpdate();
     }
 
