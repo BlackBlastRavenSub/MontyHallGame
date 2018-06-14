@@ -45,6 +45,11 @@ public class GameCoreActivity extends AppCompatActivity {
             //TextView name = findViewById(R.id.output);
             //name.setText(R.string.input);
         }
+        @Override
+        public void screenUpdate(){
+
+        };
+        //何かのデータを送ったらそれを適用して画面を更新できるようにしたい!
     };
     Database database;
     Game game = new Game(subcode);
@@ -208,4 +213,6 @@ interface Subcode {
     void reading();
 
     void textChange(String name, String input, String output);
+
+    void screenUpdate();
 }
