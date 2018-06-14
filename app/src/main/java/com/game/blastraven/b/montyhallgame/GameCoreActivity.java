@@ -90,9 +90,6 @@ public class GameCoreActivity extends AppCompatActivity {
         game_core = this.findViewById(R.id.textView);
         String game_core_view = getString(R.string.game_core, game.getSelect$production_sources_for_module_app());
         game_core.setText(game_core_view);
-        if (game.getStage$production_sources_for_module_app() == null) {
-            game.setStage$production_sources_for_module_app("outofrange");
-        }
         switch (game.getStage$production_sources_for_module_app()) {
             case "start":
                 game.GameStart$production_sources_for_module_app();
