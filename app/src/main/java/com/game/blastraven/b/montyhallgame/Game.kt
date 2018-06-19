@@ -1,7 +1,6 @@
 package com.game.blastraven.b.montyhallgame
 
 import android.view.View
-import android.widget.TextView
 
 /**
  * Created by KOGUMA on 2018/03/25.
@@ -49,13 +48,16 @@ class Game internal constructor(internal var subcode: Subcode) {
     }
 
     //成功した!
-    internal fun StageClear() {}
+    internal fun StageClear() {
+
+    }
 
     //成功して終了した!
     internal fun GameSet() {
         val finalscore = score.toString()
         subcode.writeing(finalscore)
         database!!.writeing(finalscore)
+        subcode.screenUpdate("DataSending...")
     }
 
     //失敗した!

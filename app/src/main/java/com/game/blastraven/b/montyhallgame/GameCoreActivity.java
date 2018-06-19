@@ -7,8 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beardedhen.androidbootstrap.BootstrapButton;
-
 public class GameCoreActivity extends AppCompatActivity {
     //インターフェイスの実装と処理の記述
     Subcode subcode = new Subcode() {
@@ -46,7 +44,8 @@ public class GameCoreActivity extends AppCompatActivity {
             //name.setText(R.string.input);
         }
         @Override
-        public void screenUpdate(){
+        public void screenUpdate(String s){
+            //どう書こう・・・？
 
         };
         //何かのデータを送ったらそれを適用して画面を更新できるようにしたい!
@@ -211,5 +210,5 @@ interface Subcode {
 
     void textChange(String name, String input, String output);
 
-    void screenUpdate();
+    void screenUpdate(String s);
 }
