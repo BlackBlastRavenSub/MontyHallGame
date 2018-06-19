@@ -56,7 +56,6 @@ class Game internal constructor(internal var subcode: Subcode) {
         val finalscore = score.toString()
         subcode.writeing(finalscore)
         database!!.writeing(finalscore)
-
     }
 
     //失敗した!
