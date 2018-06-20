@@ -43,11 +43,14 @@ public class GameCoreActivity extends AppCompatActivity {
             //TextView name = findViewById(R.id.output);
             //name.setText(R.string.input);
         }
+
         @Override
-        public void screenUpdate(String s){
+        public void screenUpdate(String s) {
             //どう書こう・・・？
 
-        };
+        }
+
+        ;
         //何かのデータを送ったらそれを適用して画面を更新できるようにしたい!
     };
     Database database;
@@ -118,7 +121,6 @@ public class GameCoreActivity extends AppCompatActivity {
         String game_core_setview = getString(R.string.game_core, game.getSelect$production_sources_for_module_app());
         game_core.setText(game_core_setview);
     }
-
 
     //各ボタンを押したときの動作
     //ドアボタン
