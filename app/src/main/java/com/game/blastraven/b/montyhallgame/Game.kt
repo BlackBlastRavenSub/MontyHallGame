@@ -6,7 +6,8 @@ import android.view.View
  * Created by KOGUMA on 2018/03/25.
  */
 
-class Game internal constructor(internal var subcode: Subcode) {
+class Game internal constructor(internal var subcode: Subcode){
+    //class Game internal constructor(internal var subcode: Subcode)
 
     internal var select: Int = 0//プレイヤーが選んだドア
     internal var firstId: Int = 0//プレイヤーが最初に選んだドアのidを保存しておく変数
@@ -22,6 +23,7 @@ class Game internal constructor(internal var subcode: Subcode) {
         select = 0
         this.stage = "outofrange"
         //database = new Database(this);
+        this.subcode=subcode
 
     }
 
@@ -33,6 +35,7 @@ class Game internal constructor(internal var subcode: Subcode) {
             dummy = 1 + java.util.Random().nextInt(100)
         } while (correct == dummy)
         //GameCoreActivity.textChange("test", "gamestart", "textView");
+
 
     }
 
